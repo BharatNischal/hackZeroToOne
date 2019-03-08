@@ -1,0 +1,11 @@
+<% include partials/header %>
+<form action="/findmatch" method="post">
+    <select name="category" >   
+    <% interests.forEach(function(interest){%>
+        <option value="<%= interest.category %>"><%= interest.category%></option>
+    <% })%>    
+    </select>
+    <label> Starting time <input type="time" name="fTime"></label>
+    <label> Ending time <input type="time" name="eTime"></label>
+    <button>Submit</button>
+</form>
