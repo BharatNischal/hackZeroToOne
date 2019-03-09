@@ -1,5 +1,78 @@
 <% include partials/header %>
-<form action="/findmatch" method="post">
+<style>
+        body{
+            color:#6a6f8c;
+            background:#c8c8c8;
+            background:url("https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg");
+    
+            background-size:cover;
+            background-repeat:no-repeat;
+        } 
+        .overlay{
+            width:100%;
+            height: 100vh;
+            background-color:rgba(40, 57, 101, 0.9);
+            position: absolute;
+            top:0px;
+            left:0px;
+            z-index: -1;
+        }
+        .form-control{
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .opacity{
+            opacity: 0.9;
+        }
+        .container-fluid{
+            padding-top:10px; 
+            padding-bottom:50px;
+        }
+        </style>
+    </head>
+    <body>
+<% include partials/nav %>
+<div class="overlay"></div>
+    
+
+<div class="container-fluid mt-5">
+    <h1 class="text-center" style="font-family:fantasy;color:white ; font-size: 55px; border-bottom: 2px solid white; padding:10px; font-weight:100;">Find Someone!!</h1>
+
+    <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div style="border-radius:8px; padding: 30px; "   class="col-sm-6">
+
+    <form action="/findmatch"  method="post" class="opacity">
+
+    <div class="form-group">
+        <label style="font-family:fantasy; color:white; font-size: 20px;">Select Category</label>
+        <select class="form-control" name="category" id="#" style="border-radius:20px; margin-bottom: 15px;">
+                <% interests.forEach(function(interest){%>
+                    <option value="<%= interest.category %>"><%= interest.category%></option>
+                <% })%>  
+        </select>
+        <div class="form-group">
+                <label style="font-family:fantasy; color:white; font-size: 20px;">Starting Time</label>
+            <input type="time" name="fTime" class="form-control" style="border-radius:20px;">
+        </div>
+        <div class="form-group">
+                <label style="font-family:fantasy; color:white ; font-size: 20px;">Ending Time</label>
+                <input type="time" name="eTime" class="form-control" style="border-radius:20px;">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit"style="border-radius:20px;">
+            </div>
+        
+    </div>
+    </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+</div>
+
+<!-- <form action="/findmatch" method="post">
     <select name="category" >   
     <% interests.forEach(function(interest){%>
         <option value="<%= interest.category %>"><%= interest.category%></option>
@@ -8,4 +81,5 @@
     <label> Starting time <input type="time" name="fTime"></label>
     <label> Ending time <input type="time" name="eTime"></label>
     <button>Submit</button>
-</form>
+</form> -->
+<% include partials/footer %>

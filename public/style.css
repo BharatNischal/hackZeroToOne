@@ -1,0 +1,37 @@
+html,body{
+    margin: 0;
+    padding: 0;
+  }
+  
+  header{
+    height: 40px;
+    margin: 0 5px;
+    background-color: blue;
+    border: 2px solid white;
+    border-radius: 7px;
+  }
+  
+  .output{
+    width: 50%;
+    min-height: 350px;
+    background-color: #D0D0D0;
+    border: 2px solid white;
+    border-radius: 7px;
+    margin-left: 5px;
+  }
+  
+  input{
+    font-size: 25px;
+    margin: 4px 5px;
+    width: 50%;
+  }
+  
+  button{
+    background-color: blue;
+    font-size: 18px;
+    margin: 0 5px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 8px;
+  }

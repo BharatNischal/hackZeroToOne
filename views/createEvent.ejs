@@ -1,0 +1,23 @@
+<% include partials/header%>
+</head>
+</body>
+<% include partials/nav%>
+<div class="container-fluid bg-info pt-5 pb-5 text-center"> 
+	<div class="row">
+	<div class="col-4 "></div>
+	<div class="col-4 bg-white pt-5 pb-5 "> <h3> Create Events </h3> <p class="text-secondary"> All fields are Required* </p> <br/>
+	 <form action="/createEvent" method="POST">
+	    <input type="text" name="title" placeholder="Title" class="form-control" required="required"> <br/> 
+	  <input type="text" name="description" placeholder="Description" class="form-control" required="required"> <br/> 
+	 <input type="time" name="sTime" placeholder="Start Time"class="form-control"required="required"> <br/>
+	  <input type="time" name="eTime" placeholder="End Time"class="form-control"required="required"> <br/>
+	   <input type="phone" name="phone" placeholder="xxxxxxxxxxx"class="form-control"required="required"> <br/>
+        <input type="text" name="place" placeholder="Place"class="form-control"required="required"> <br/>
+        <input type="text" name="url" placeholder="imageUrl"class="form-control"required="required"> <br/>
+	 <input type="submit" name="sub" value="Submit" class="btn btn-outline-success btn-block"required="required">   <br/>
+	</form>
+</div>
+	<div class="col-4 "></div>
+</div>
+</div>
+<% include partials/footer%>
