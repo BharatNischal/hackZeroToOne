@@ -118,7 +118,7 @@ io.sockets.on('connection', function(socket) {
 
 
 app.get("/",function(req,res){
-    res.render("home.ejs",{currentUser:req.user});
+    res.render("home",{currentUser:req.user});
 });
 
 //Auth Routes 
@@ -155,8 +155,35 @@ app.get('/createEvent',function(req, res){
 });
 
 app.post('/createEvent',function(req, res){
-    //Event.create()
-})
+    var freeTime = {from:null,to:null};
+    var fd=new Date();
+            var hr=Number(req.body.fTime.split(":")[0]);
+            var min=Number(req.body.fTime.split(":")[1]);
+            console.log(hr," : ",min);
+            fd=new Date(fd.getFullYear(),fd.getMonth(),fd.getDay(),hr,min);
+            
+            var ed=new Date();
+             hr=Number(req.body.eTime.split(":")[0]);
+             min=Number(req.body.eTime.split(":")[1]);
+            console.log("End ",hr," : ",min);
+            ed=new Date(ed.getFullYear(),ed.getMonth(),ed.getDay(),hr,min); 
+            freeTime.from=fd;
+            freeTime.to=ed;
+    var eventObj = {tittle:req.body.title,desc:req.body.description,url:req.body.url,phone:req.body.phone,place:req.body.place,freeTime:freeTime}
+    Event.create(eventObj,function(err, event){
+        res.redirect('/');
+    });
+});
+
+app.get('/showEvent',function(req,res){
+    Event.find({},function(err,foundEvents){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        }
+        res.render("allEvents",{foundEvents:foundEvents});
+    });
+});
 
 //Common Interest========================================
 app.get("/findmatch/",function(req,res){
@@ -190,10 +217,7 @@ app.post("/findmatch",function(req,res){
             ed=new Date(ed.getFullYear(),ed.getMonth(),ed.getDay(),hr,min); 
             user.freeTime.from=fd;
             user.freeTime.to=ed;
-            user.save();
-        
-           
-            
+            user.save();    
             
         }
     });
@@ -394,7 +418,7 @@ app.get('/chat/:groupId/',function (req, res) {
     grp.members.push(req.user.username);
     grp.save();
     res.redirect('/chatting/'+grp._id);
-  })
+  });
 });
 
 
